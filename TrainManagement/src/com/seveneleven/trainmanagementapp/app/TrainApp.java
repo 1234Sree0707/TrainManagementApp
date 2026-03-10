@@ -1,40 +1,46 @@
 package com.seveneleven.trainmanagementapp.app;
 import java.util.*;
 
-
 /**
  * MAIN CLASS
  * 
- * Use Case 3 : Track unique Bogie Id's
+ * Use Case 4 : Maintain Ordered Bogie Consist
  * 
  * Description:
- * This class ensures that duplicate bogie ID are not added into the train 
- * formation using HashSet.
+ * This class models the physical chaining of train bogies 
+ * using LinkedList for ordered operations.
  * 
- * This use case maps uniqueness validation using Set.
+ * This maps positional operations using LinkedList.
  * 
  * @author Developer
- * @version 3.0
+ * @version 4.0
  * 
  */
 public class TrainApp{
 
 	public static void main(String[] args) {
 		System.out.println("================================");
-		System.out.println("==Track Unique bogie ID's==");
+		System.out.println("==Maintain ordered bogie consist==");
 		System.out.println("================================");
-		Set<String> bogieID=new HashSet<>();
-		bogieID.add("BG101");
-		bogieID.add("BG102");
-		bogieID.add("BG103");
-		bogieID.add("BG104");
-		bogieID.add("BG101");
-		System.out.println("Bogie ID's after insertion");
-		Iterator<String> it=bogieID.iterator();
-		while(it.hasNext()) {
-			String id=it.next();
-			System.out.println(id);
-		}
+		List<String> trainConsist=new LinkedList<>();
+		System.out.println("Initial Train consist");
+		trainConsist.add("Engine");
+		trainConsist.add("Sleeper");
+		trainConsist.add("AC");
+		trainConsist.add("Cargo");
+		trainConsist.add("Guard");
+		System.out.println(trainConsist);
+		System.out.println("After inserting 'Pantry Car' at position 2");
+		trainConsist.add(2,"Pantry Car");
+		System.out.println(trainConsist);
+		System.out.println("After removing first and last bogie");
+		trainConsist.removeFirst();
+		trainConsist.removeLast();
+		System.out.println(trainConsist);
+		System.out.println("UC4 Ordered consist operations completed");
+		
+
+		
 		
 		
 		
