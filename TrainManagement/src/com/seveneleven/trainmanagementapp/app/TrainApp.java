@@ -1,54 +1,42 @@
 package com.seveneleven.trainmanagementapp.app;
 import java.util.*;
 
+
 /**
  * MAIN CLASS
  * 
- * Use Case 2 : Add Passenger Bogies to train
+ * Use Case 3 : Track unique Bogie Id's
  * 
  * Description:
- * This class demonstrates how passenger bogies can be 
- * managed dynamically using ArrayList operations. 
+ * This class ensures that duplicate bogie ID are not added into the train 
+ * formation using HashSet.
  * 
- * This use case maps CRUD operations using ArrayList.
+ * This use case maps uniqueness validation using Set.
  * 
  * @author Developer
- * @version 2.0
+ * @version 3.0
  * 
  */
 public class TrainApp{
 
 	public static void main(String[] args) {
 		System.out.println("================================");
-		System.out.println("==Train Consist Management App==");
+		System.out.println("==Track Unique bogie ID's==");
 		System.out.println("================================");
+		Set<String> bogieID=new HashSet<>();
+		bogieID.add("BG101");
+		bogieID.add("BG102");
+		bogieID.add("BG103");
+		bogieID.add("BG104");
+		bogieID.add("BG101");
+		System.out.println("Bogie ID's after insertion");
+		Iterator<String> it=bogieID.iterator();
+		while(it.hasNext()) {
+			String id=it.next();
+			System.out.println(id);
+		}
 		
-		List<String> trainConsist = new ArrayList<>();
-		List<String> passengerBogies=new ArrayList<>();
-		passengerBogies.add("Sleeper");
-		passengerBogies.add("First class");
-		passengerBogies.add("AC Chair");
-		System.out.println("The train has "+passengerBogies.size()+"different types of bogies and they are:");
-		for(String bogie:passengerBogies) {
-			System.out.println(bogie);
-		}
-		System.out.println("=================================\n");
-
-		passengerBogies.remove("Sleeper");
-		System.out.println("Sleeper bogie removed");
-		System.out.println("=================================\n");
-
-		if(passengerBogies.contains("AC Chair")) {
-			System.out.println("AC Chair exisits");
-		}
-		System.out.println("=================================\n");
-		System.out.println("Updated bogie list:");
-		for(String bogie:passengerBogies) {
-			System.out.println(bogie);
-		}
-		System.out.println("=================================\n");
-
-		System.out.println("UC2 operations completed successfully");
+		
 		
 		
 		
