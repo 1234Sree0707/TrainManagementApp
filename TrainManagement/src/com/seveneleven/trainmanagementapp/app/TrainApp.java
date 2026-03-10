@@ -4,32 +4,34 @@ import java.util.*;
 /**
  * MAIN CLASS
  * 
- * Use Case 5 : Preserve Insertion Order of Bogies
+ * Use Case 6 : Map Bogie to Capacity (HashMap)
  * 
  * Description:
- * This class maintains the exact attachment order of bogies
- * while also preventing duplicate entries using LinkedHashSet
+ * This class associates each bogie with its seating or load capacity
+ * using a key-value mapping structure.
  * 
- * This maps ordered uniqueness using LinkedHashSet.
+ * This maps lookup-based access using HashMap.
  * 
  * @author Developer
- * @version 5.0
+ * @version 6.0
  * 
  */
 public class TrainApp{
 
 	public static void main(String[] args) {
 		System.out.println("======================================");
-		System.out.println("==Preserve insertion order of bogies==");
+		System.out.println("==Map bogie to capacity==");
 		System.out.println("======================================");
-		Set<String> formation=new LinkedHashSet<>();
-		formation.add("Engine");
-		formation.add("Guard");
-		formation.add("Cargo");
-		formation.add("Guard");
-		System.out.println("Final train formation:");
-		System.out.println(formation);
-		
+		Map<String,Integer> capacityMap=new HashMap<>();
+		capacityMap.put("First Class", 24);
+		capacityMap.put("Cargo",120);
+		capacityMap.put("Sleeper",72);
+		capacityMap.put("AC Chair",56);
+		System.out.println("Bogie capacity details:");
+		for(Map.Entry<String,Integer> entry:capacityMap.entrySet()) {
+			System.out.println(entry.getKey()+"->"+entry.getValue());
+		}
+		System.out.println("Bogie mapping completed");
 
 		
 		
