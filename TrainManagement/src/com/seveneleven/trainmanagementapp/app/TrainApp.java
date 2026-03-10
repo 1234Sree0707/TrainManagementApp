@@ -17,7 +17,7 @@ import java.util.*;
  * @version 1.0
  * 
  */
-public class TrainManagementApp {
+public class TrainApp{
 
 	public static void main(String[] args) {
 		System.out.println("================================");
