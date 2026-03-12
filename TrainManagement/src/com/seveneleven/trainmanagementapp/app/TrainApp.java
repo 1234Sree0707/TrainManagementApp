@@ -5,75 +5,80 @@ import java.util.stream.*;
 /**
  * MAIN CLASS
  * 
- * Use Case 12 : Safety Compilance Check for Goods Bogie.	
+ * Use Case 14: Handle Invalid Bogie Capacity (Custom Exception)
  * 
  * Description:
- * This class enforces domain safety rules on goods bogies.
+ * This class prevents creation of passenger bogies
+ * with invalid seating capacity using a custom exception
  * 
- * This maps real world cargo safety rules using streams.
+ * This maps fail-fast validation using checked exceptions.
  * 
  * @author Developer
-<<<<<<< HEAD
- * @version 12.0
-=======
- * @version 11.0
->>>>>>> 4222504c1cd89838d0947ba76381b9e01907c8cb
+ * @version 14.0
  * 
  */
 public class TrainApp {
 	
-	static class GoodsBogie{
-		String type;
-		String cargo;
+	static class InvalidCapacityException extends Exception {
+		public InvalidCapacityException(String message) {
+			super(message);
+		}
+	}
+	
+	static class Bogie{
+		String name;
+		int capacity;
 		
-		GoodsBogie(String type,String cargo){
-			this.type=type;
-			this.cargo=cargo;
+		public Bogie(String name,int capacity) throws InvalidCapacityException {
+			if(capacity <= 0) {
+				throw new InvalidCapacityException("Error : Capacity must be greater than zero");
+			}
+			this.name=name;
+			this.capacity=capacity;
 		}
 
-		public String getType() {
-			return type;
+		public String getName() {
+			return name;
 		}
 
-		public String getCargo() {
-			return cargo;
+		public int getCapacity() {
+			return capacity;
 		}
-		
-		
 		
 	}
 	
 
-	public static void main(String[] args) {
-		System.out.println("===================================================");
-		System.out.println("Safety Compilance Check for Goods Bogie==");
-		System.out.println("===================================================");
+	public static void main(String[] args) throws InvalidCapacityException{
+		System.out.println("==========================================");
+		System.out.println("Handle Invalid Capacity Input");
+		System.out.println("==========================================");
 		
-		ArrayList<GoodsBogie> train = new ArrayList<>();
-		train.add(new GoodsBogie("Cylindrical","Petroleum"));
-		train.add(new GoodsBogie("Open","Coal"));
-		train.add(new GoodsBogie("Box","Grain"));
-		train.add(new GoodsBogie("Cylindrical","Coal"));
-		
-		System.out.println("Goods Bogies in Train");
-		for(GoodsBogie bogie : train) {
-			System.out.println(bogie.getType() + " -> " + bogie.getCargo());
-		}
-		System.out.println();
-		boolean isSafe=(train.stream().allMatch(t -> !(t.getType().equals("Cylindrical") && t.getCargo().equals("Coal"))));
-		
-		System.out.println("Safety Compilance Status : " + isSafe);
-		if(isSafe) {
-			System.out.println("Train formation is SAFE.");
-		}
-		else {
-			System.out.println("Train formation is NOT SAFE.");
+		List<Bogie> bogies=new ArrayList<>();
+		Scanner sc=new Scanner(System.in);
+		for(int i=0;i<5;i++) {
+			try {
+				System.out.println("Enter Bogie Name: ");
+				String name=sc.nextLine();
+				System.out.println("Enter Capacity: ");
+				int quantity=sc.nextInt();
+				bogies.add(new Bogie(name,quantity));
+				System.out.println(name + " -> " + quantity);
+				sc.nextLine();
+			}
+			catch(InvalidCapacityException e) {
+				System.out.println(e.getMessage());
+				break;
+			}
 		}
 		
 		
 		
-			
-
+		
+		
+		
+		
+		
+		
 
 		
 	}
