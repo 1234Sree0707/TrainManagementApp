@@ -13,11 +13,7 @@ import java.util.stream.*;
  * This maps format validation logic using Pattern matching.
  * 
  * @author Developer
-<<<<<<< HEAD
- * @version 10.0
-=======
  * @version 11.0
->>>>>>> feature/UC11
  * 
  */
 public class TrainApp {
