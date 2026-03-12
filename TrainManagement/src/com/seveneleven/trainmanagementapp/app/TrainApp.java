@@ -16,6 +16,8 @@ import java.util.*;
  * @version 7.0
  * 
  */
+import java.util.*;
+import java.util.stream.Collectors;
 public class TrainApp{
 
 	static class Bogie{
@@ -29,11 +31,8 @@ public class TrainApp{
 		public String toString() {
 			return name+"->"+capacity;
 		}
-	}
-	static class SortByCapacity implements Comparator<Bogie>{
-		public int compare(Bogie a,Bogie b) {
-			return a.capacity-b.capacity;
-		}
+	
+	
 	}
 	public static void main(String[] args) {
 		List<Bogie> bogies=new ArrayList<>();
@@ -42,19 +41,18 @@ public class TrainApp{
 		bogies.add(new Bogie("Sleeper",72));
 		bogies.add(new Bogie("AC Chair",56));
 		System.out.println("======================================");
-		System.out.println("Sort Bogies by Capacity");
+		System.out.println("Filter passenger bogies using streams ");
 		System.out.println("======================================");
-		System.out.println("Bogies before sorting:");
+		System.out.println("All Bogies:");
 		for(Bogie b:bogies) {
-			System.out.println(b);
+			System.out.println(b.name+"->"+b.capacity);
 		}
-		System.out.println("======================================");
+		System.out.println("\nFiltered bogies (capacity>60)");
 
-		Collections.sort(bogies,new SortByCapacity());
-		System.out.println("Bogies after sorting by capacity:");
-		for(Bogie b:bogies) {
-			System.out.println(b);
-		}
+	
+		List<Bogie> highCapacityBogies = bogies.stream().filter(b -> b.capacity > 60)  .collect(Collectors.toList());
+		 highCapacityBogies.forEach(System.out::println);
+
 		
 		
 		
