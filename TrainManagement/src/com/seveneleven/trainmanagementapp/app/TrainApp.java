@@ -1,81 +1,60 @@
 package com.seveneleven.trainmanagementapp.app;
+
 import java.util.*;
 import java.util.stream.*;
 
-/**
- * MAIN CLASS
- * 
- * Use Case 12 : Safety Compilance Check for Goods Bogie.	
- * 
- * Description:
- * This class enforces domain safety rules on goods bogies.
- * 
- * This maps real world cargo safety rules using streams.
- * 
- * @author Developer
-<<<<<<< HEAD
- * @version 12.0
-=======
- * @version 11.0
->>>>>>> 4222504c1cd89838d0947ba76381b9e01907c8cb
- * 
- */
 public class TrainApp {
-	
-	static class GoodsBogie{
-		String type;
-		String cargo;
-		
-		GoodsBogie(String type,String cargo){
-			this.type=type;
-			this.cargo=cargo;
-		}
+    
+    static class Bogie {
+        String type;
+        String cargo;
+        
+        Bogie(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
+        }
 
-		public String getType() {
-			return type;
-		}
+        public String getType() {
+            return type;
+        }
 
-		public String getCargo() {
-			return cargo;
-		}
-		
-		
-		
-	}
-	
+        public String getCargo() {
+            return cargo;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("Performance comparison (Loops vs Streams)");
+        System.out.println("========================================");
 
-	public static void main(String[] args) {
-		System.out.println("===================================================");
-		System.out.println("Safety Compilance Check for Goods Bogie==");
-		System.out.println("===================================================");
-		
-		ArrayList<GoodsBogie> train = new ArrayList<>();
-		train.add(new GoodsBogie("Cylindrical","Petroleum"));
-		train.add(new GoodsBogie("Open","Coal"));
-		train.add(new GoodsBogie("Box","Grain"));
-		train.add(new GoodsBogie("Cylindrical","Coal"));
-		
-		System.out.println("Goods Bogies in Train");
-		for(GoodsBogie bogie : train) {
-			System.out.println(bogie.getType() + " -> " + bogie.getCargo());
-		}
-		System.out.println();
-		boolean isSafe=(train.stream().allMatch(t -> !(t.getType().equals("Cylindrical") && t.getCargo().equals("Coal"))));
-		
-		System.out.println("Safety Compilance Status : " + isSafe);
-		if(isSafe) {
-			System.out.println("Train formation is SAFE.");
-		}
-		else {
-			System.out.println("Train formation is NOT SAFE.");
-		}
-		
-		
-		
-			
+        List<Bogie> train = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) { 
+            train.add(new Bogie("Cylindrical", i % 2 == 0 ? "Coal" : "Petroleum"));
+            train.add(new Bogie("Box", "Grain"));
+            train.add(new Bogie("Open", "Coal"));
+        }
 
+        // Loop-based filtering
+        long startLoop = System.nanoTime();
+        List<Bogie> loopFiltered = new ArrayList<>();
+        for (Bogie b : train) {
+            if (!(b.getType().equals("Cylindrical") && b.getCargo().equals("Coal"))) {
+                loopFiltered.add(b);
+            }
+        }
+        long endLoop = System.nanoTime();
+        long loopDuration = endLoop - startLoop;
 
-		
-	}
+        long startStream = System.nanoTime();
+        List<Bogie> streamFiltered = train.stream()
+                .filter(b -> !(b.getType().equals("Cylindrical") && b.getCargo().equals("Coal")))
+                .collect(Collectors.toList());
+        long endStream = System.nanoTime();
+        long streamDuration = endStream - startStream;
 
+  
+        System.out.println("Loop execution time (ns): " + loopDuration);
+        System.out.println("Stream execution time (ns): " + streamDuration);
+    }
 }
