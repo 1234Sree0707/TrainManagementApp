@@ -13,7 +13,11 @@ import java.util.stream.*;
  * This maps real world cargo safety rules using streams.
  * 
  * @author Developer
+<<<<<<< HEAD
  * @version 12.0
+=======
+ * @version 11.0
+>>>>>>> 4222504c1cd89838d0947ba76381b9e01907c8cb
  * 
  */
 public class TrainApp {
