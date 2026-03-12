@@ -1,19 +1,17 @@
 package com.seveneleven.trainmanagementapp.app;
 import java.util.*;
-
 /**
  * MAIN CLASS
  * 
- * Use Case 7 : Map Bogies to Capacity (Comparator)
+ * Use Case 8 : Filter Passengers Bogies using Stream.
  * 
  * Description:
- * This class sorts passenger bogies based on seating capacity 
- * using a custom comparator.
+ * This class filters passengers using stream api.
  * 
- * This maps custom ordering using Comparator.
+ * This maps functional filtering using streams.
  * 
  * @author Developer
- * @version 7.0
+ * @version 8.0
  * 
  */
 import java.util.*;
