@@ -1,6 +1,4 @@
 package com.seveneleven.trainmanagementapp.app;
-<<<<<<< HEAD
-
 /**
  * MAIN CLASS
  * 
@@ -13,23 +11,7 @@ package com.seveneleven.trainmanagementapp.app;
  * 
  * @author Developer
  * @version 9.0
-=======
-import java.util.*;
-/**
- * MAIN CLASS
- * 
- * Use Case 8 : Filter Passengers Bogies using Stream.
- * 
- * Description:
- * This class filters passengers using stream api.
- * 
- * This maps functional filtering using streams.
- * 
- * @author Developer
- * @version 8.0
->>>>>>> d952cda092b9a4c422cc9ccfa3f71b60774effd4
- * 
- */
+*/
  
  import java.util.*;
  import java.util.stream.Collectors;
@@ -51,7 +33,6 @@ import java.util.*;
          }
      }
 
-<<<<<<< HEAD
      public static void main(String[] args) {
          List<Bogie> bogies = new ArrayList<>();
          bogies.add(new Bogie("First Class", 24));
@@ -77,6 +58,4 @@ import java.util.*;
          }
      }
  }
-=======
-}
->>>>>>> d952cda092b9a4c422cc9ccfa3f71b60774effd4
+
