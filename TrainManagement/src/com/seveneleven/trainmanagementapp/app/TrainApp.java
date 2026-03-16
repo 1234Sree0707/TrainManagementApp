@@ -1,81 +1,48 @@
 package com.seveneleven.trainmanagementapp.app;
-import java.util.*;
-import java.util.stream.*;
+import java.util.Scanner;
 
-/**
- * MAIN CLASS
- * 
- * Use Case 12 : Safety Compilance Check for Goods Bogie.	
- * 
- * Description:
- * This class enforces domain safety rules on goods bogies.
- * 
- * This maps real world cargo safety rules using streams.
- * 
- * @author Developer
-<<<<<<< HEAD
- * @version 12.0
-=======
- * @version 11.0
->>>>>>> 4222504c1cd89838d0947ba76381b9e01907c8cb
- * 
- */
 public class TrainApp {
-	
-	static class GoodsBogie{
-		String type;
-		String cargo;
-		
-		GoodsBogie(String type,String cargo){
-			this.type=type;
-			this.cargo=cargo;
-		}
 
-		public String getType() {
-			return type;
-		}
+    public static void main(String[] args) {
 
-		public String getCargo() {
-			return cargo;
-		}
-		
-		
-		
-	}
-	
+        Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		System.out.println("===================================================");
-		System.out.println("Safety Compilance Check for Goods Bogie==");
-		System.out.println("===================================================");
-		
-		ArrayList<GoodsBogie> train = new ArrayList<>();
-		train.add(new GoodsBogie("Cylindrical","Petroleum"));
-		train.add(new GoodsBogie("Open","Coal"));
-		train.add(new GoodsBogie("Box","Grain"));
-		train.add(new GoodsBogie("Cylindrical","Coal"));
-		
-		System.out.println("Goods Bogies in Train");
-		for(GoodsBogie bogie : train) {
-			System.out.println(bogie.getType() + " -> " + bogie.getCargo());
-		}
-		System.out.println();
-		boolean isSafe=(train.stream().allMatch(t -> !(t.getType().equals("Cylindrical") && t.getCargo().equals("Coal"))));
-		
-		System.out.println("Safety Compilance Status : " + isSafe);
-		if(isSafe) {
-			System.out.println("Train formation is SAFE.");
-		}
-		else {
-			System.out.println("Train formation is NOT SAFE.");
-		}
-		
-		
-		
-			
+        System.out.println("\n======Linear Search for Bogie ID======");
 
+        System.out.println("Enter number of bogie IDs:");
+        int n = sc.nextInt();
+        sc.nextLine();
 
-		
-	}
+        String[] bogieIDs = new String[n];
 
+        // Input bogie IDs
+        System.out.println("Enter bogie IDs:");
+
+        for(int i = 0; i < n; i++) {
+            bogieIDs[i] = sc.nextLine();
+        }
+
+        // Search key
+        System.out.println("Enter Bogie ID to search:");
+        String searchKey = sc.nextLine();
+
+        boolean found = false;
+
+        // Linear Search
+        for(int i = 0; i < n; i++) {
+
+            if(bogieIDs[i].equals(searchKey)) {
+                System.out.println("Bogie ID found at position: " + i);
+                found = true;
+                break;
+            }
+        }
+
+        // If not found
+        if(!found) {
+            System.out.println("Bogie ID not found in the consist.");
+        }
+
+        sc.close();
+    }
 }
