@@ -5,77 +5,42 @@ import java.util.stream.*;
 /**
  * MAIN CLASS
  * 
- * Use Case 12 : Safety Compilance Check for Goods Bogie.	
+ * Use Case 17: Sort Bogie Names Using Arrays.sort()
  * 
  * Description:
- * This class enforces domain safety rules on goods bogies.
+ * This class demonstrates sorting of bogie type names
+ * alphabetically using Java's built-in Arrays.sort() method.
  * 
- * This maps real world cargo safety rules using streams.
+ * This maps optimized sorting using Java library utilities.
  * 
  * @author Developer
-<<<<<<< HEAD
- * @version 12.0
-=======
- * @version 11.0
->>>>>>> 4222504c1cd89838d0947ba76381b9e01907c8cb
+ * @version 17.0
  * 
  */
 public class TrainApp {
-	
-	static class GoodsBogie{
-		String type;
-		String cargo;
-		
-		GoodsBogie(String type,String cargo){
-			this.type=type;
-			this.cargo=cargo;
-		}
 
-		public String getType() {
-			return type;
-		}
 
-		public String getCargo() {
-			return cargo;
-		}
+	public static void main(String[] args)  {
+		System.out.println("================================================");
+		System.out.println("==UC 17 : Sort Bogie Names using Arrays.sort()==");
+		System.out.println("================================================");
 		
 		
-		
-	}
-	
-
-	public static void main(String[] args) {
-		System.out.println("===================================================");
-		System.out.println("Safety Compilance Check for Goods Bogie==");
-		System.out.println("===================================================");
-		
-		ArrayList<GoodsBogie> train = new ArrayList<>();
-		train.add(new GoodsBogie("Cylindrical","Petroleum"));
-		train.add(new GoodsBogie("Open","Coal"));
-		train.add(new GoodsBogie("Box","Grain"));
-		train.add(new GoodsBogie("Cylindrical","Coal"));
-		
-		System.out.println("Goods Bogies in Train");
-		for(GoodsBogie bogie : train) {
-			System.out.println(bogie.getType() + " -> " + bogie.getCargo());
-		}
+		String[] capacities = {"Sleeper","AC Chair","First Class","General","Luxury"};
+		System.out.println("Original Bogie Names : ");
+		for (String num : capacities) {
+            System.out.print(num + " ");
+        }
 		System.out.println();
-		boolean isSafe=(train.stream().allMatch(t -> !(t.getType().equals("Cylindrical") && t.getCargo().equals("Coal"))));
+		System.out.println();
 		
-		System.out.println("Safety Compilance Status : " + isSafe);
-		if(isSafe) {
-			System.out.println("Train formation is SAFE.");
-		}
-		else {
-			System.out.println("Train formation is NOT SAFE.");
-		}
-		
-		
-		
-			
+        Arrays.sort(capacities);
+        
+        System.out.println("Sorted Bogie Names : ");
+        for (String num : capacities) {
+            System.out.print(num + " ");
+        }
 
-
-		
 	}
 
 }
